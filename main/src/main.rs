@@ -46,4 +46,31 @@ fn main() {
         "rainy" | "cloudy" | "stormy" => println!("Stay safe in this weather, {}.", name),
         _ => println!("Thanks for the update, {}.", name),
     }
+    println!("Where are you located, {}?", name);
+    let mut location = String::new();
+    std::io::stdin().read_line(&mut location).expect("Failed to read line");
+    let location = location.trim();
+    println!("{} sounds like a nice place!", location);
+
+    struct Person {
+        name: String,
+        age: u32,
+        mood: String,
+        weather: String,
+        location: String,
+    }
+    let person = Person {
+        name,
+        age,
+        mood: mood.to_string(),
+        weather: weather.to_string(),
+        location: location.to_string()
+    };
+    impl std::fmt::Debug for Person {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "Person {{ name: {}, age: {}, mood: {}, weather in {}: {} }}", self.name, self.age, self.mood, self.location, self.weather)
+        }
+    }    println!("Person details: {:?}", person);
+
+
 }
